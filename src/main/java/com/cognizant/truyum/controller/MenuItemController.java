@@ -26,9 +26,7 @@ public class MenuItemController {
     @GetMapping(value = "/show-menu-list-admin")
     public String showMenuItemListAdmin(ModelMap model) throws FileSystemException {
         LOGGER.info("Start - showMenuItemListAdmin");
-        
         model.addAttribute("menuItemListAdmin", menuItemDao.getMenuItemListAdmin());
-        
         LOGGER.info("End - showMenuItemListAdmin");
         return "menu-item-list-admin";
     }
@@ -47,7 +45,8 @@ public class MenuItemController {
     public String showEditMenuItem(@RequestParam long menuItemId, ModelMap model) {
         LOGGER.info("Start - showEditMenuItem");
         MenuItem item = menuItemDao.getMenuItem(menuItemId);
-                
+        //List<String> categories = new ArrayList<>();
+        
         List<String> categories = Arrays.asList(new String[]{"Starters", "Main Course", "Desert", "Drinks"});
 
         model.addAttribute("menuItem", item);
